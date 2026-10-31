@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#101b2b">
+  <title>Kanatlı — Gökyüzüne kanat çırp</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800;900&display=swap');
+    :root{--ink:#17273a;--muted:#708094;--coral:#ff795d;--yellow:#ffd66b;--cream:#fffaf0;--line:#e8e4d9;--teal:#70c9bd}
+    *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{font-family:Nunito,system-ui,sans-serif;background:#111d2b;color:var(--ink);display:grid;place-items:center}
+    button{font:inherit;cursor:pointer;border:0}button:focus-visible{outline:3px solid #50a89a;outline-offset:3px}
+    .shell{width:min(1180px,100vw);height:min(760px,100dvh);min-height:460px;background:#f4f2eb;border-radius:24px;overflow:hidden;display:grid;grid-template-columns:290px 1fr;box-shadow:0 28px 90px #08111d99;position:relative}
+    .rail{background:var(--cream);padding:30px 22px;display:flex;flex-direction:column;border-right:1px solid #e8e4dc;z-index:2}.brand{display:flex;align-items:center;gap:12px;margin:0 8px 34px}.brand-mark{width:44px;height:44px;background:#ffdf82;border:3px solid var(--ink);border-radius:14px;display:grid;place-items:center;font-size:24px;box-shadow:3px 3px 0 var(--ink);transform:rotate(-4deg)}.brand-name{font-size:20px;font-weight:1000;letter-spacing:1.4px}.brand-sub{font-size:10px;color:#8d98a1;letter-spacing:2.6px;font-weight:800;margin-top:-2px}
+    .eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#98a1a6;font-weight:900;margin:0 10px 12px}.nav{display:grid;gap:7px}.nav button{background:transparent;color:#758294;text-align:left;padding:13px 14px;border-radius:12px;font-weight:800;display:flex;align-items:center;gap:12px;transition:.18s}.nav button:hover{background:#f2eee4;color:var(--ink)}.nav button.active{background:#fce9dc;color:#c75f45}.nav .ico{font-size:18px;width:23px;text-align:center}.rail-spacer{flex:1}.best-card{background:#f3f0e7;border:1px solid #e8e2d6;border-radius:16px;padding:16px;margin:0 3px 16px}.best-label{font-size:10px;letter-spacing:1.5px;color:#8c969c;font-weight:900}.best-value{font-size:28px;font-weight:1000;margin-top:3px}.best-value span{font-size:13px;color:#99a2a6;font-weight:800}.rail-note{font-size:11px;line-height:1.5;color:#a2a9a9;margin:0 9px}
+    .stage{position:relative;min-width:0;overflow:hidden;background:#9ad9d2}.stage:before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,#9ad9d2 0%,#bfe8da 61%,#f4dc9b 100%)}canvas{position:absolute;width:100%;height:100%;inset:0;image-rendering:pixelated;touch-action:manipulation}.pause{position:absolute;left:22px;top:20px;z-index:3;width:42px;height:42px;border:1px solid #ffffffa6;border-radius:14px;background:#fff9;color:var(--ink);font-size:17px;box-shadow:0 3px 12px #36526118;display:none}.game-hud{position:absolute;right:24px;top:20px;display:none;z-index:2;color:white;text-shadow:0 2px 6px #42645c88;font-weight:1000;font-size:14px;letter-spacing:1px}.game-hud strong{font-size:22px;margin-left:7px}.overlay{position:absolute;inset:0;z-index:4;display:grid;place-items:center;padding:28px;pointer-events:none}.panel{pointer-events:auto;width:min(480px,100%);max-height:94%;overflow:auto;background:#fffdf8f2;border:1px solid #fff;border-radius:24px;padding:30px 34px;box-shadow:0 18px 60px #29484125;backdrop-filter:blur(12px);text-align:center;animation:appear .28s ease-out}@keyframes appear{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}.panel.hidden{display:none}.hero-bird{height:114px;display:grid;place-items:center;margin:-8px 0 6px}.hero-bird img{width:150px;height:110px;object-fit:contain;image-rendering:pixelated;filter:drop-shadow(0 8px 0 #17273a14);animation:bob 2.5s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-7px) rotate(-3deg)}}.kicker{font-size:10px;letter-spacing:2.5px;color:#df805f;font-weight:1000;text-transform:uppercase}.panel h1{font-size:35px;line-height:1.05;margin:7px 0 10px;font-weight:1000;letter-spacing:-1px}.panel h2{font-size:26px;margin:3px 0 8px;font-weight:1000}.desc{color:#758294;font-size:14px;line-height:1.55;margin:0 auto 21px;max-width:340px}.actions{display:grid;gap:9px}.btn{min-height:49px;border-radius:13px;font-weight:900;letter-spacing:.2px;transition:transform .15s,filter .15s}.btn:hover{transform:translateY(-2px);filter:brightness(1.03)}.btn.primary{background:var(--coral);color:white;box-shadow:0 4px 0 #d85e47}.btn.secondary{background:#f2f1e9;color:#586779}.btn.ghost{background:transparent;color:#9aa3a5;min-height:36px;font-size:12px}.keys{font-size:11px;color:#9aa3a5;margin-top:17px}.keys kbd{display:inline-block;background:white;border:1px solid #e6e4dc;border-radius:5px;padding:2px 6px;color:#748091;font:inherit;font-weight:900;box-shadow:0 2px 0 #e5e2d9}
+    .costumes{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0}.costume{height:81px;background:#f4f1e7;border:2px solid transparent;border-radius:13px;display:grid;place-items:center;transition:.15s}.costume:hover{transform:translateY(-3px)}.costume.selected{border-color:var(--coral);background:#fff3e8}.costume img{width:62px;height:56px;object-fit:contain;image-rendering:pixelated}.info{text-align:left;margin:16px 0 22px;display:grid;gap:11px}.info-row{display:flex;gap:11px;align-items:flex-start;color:#657488;font-size:13px;line-height:1.5}.info-icon{width:30px;height:30px;flex:none;border-radius:10px;background:#f8ead9;display:grid;place-items:center}.developer{font-size:12px;color:#929c9f;margin-top:16px}.developer strong{color:#33465a}.mobile-hint{display:none}
+    @media(max-width:760px){body{background:#e9e8e0}.shell{width:100vw;height:100dvh;min-height:0;border-radius:0;display:block}.rail{position:absolute;left:0;right:0;bottom:0;height:72px;padding:7px 14px calc(7px + env(safe-area-inset-bottom));border-right:0;border-top:1px solid #e8e4dc;display:block}.brand,.eyebrow,.rail-spacer,.best-card,.rail-note{display:none}.nav{height:100%;display:flex;justify-content:space-around;align-items:center}.nav button{padding:8px 10px;display:flex;flex-direction:column;gap:2px;font-size:10px}.nav .ico{font-size:18px}.stage{height:calc(100dvh - 72px);height:calc(100dvh - 72px - env(safe-area-inset-bottom))}.pause{left:15px;top:14px;width:42px;height:42px}.overlay{padding:18px}.panel{padding:25px 23px;border-radius:21px}.panel h1{font-size:31px}.hero-bird{height:88px}.hero-bird img{height:90px;width:130px}.costume{height:68px}.costume img{width:55px;height:50px}.mobile-hint{display:block;font-size:10px;color:#a1a8a6;margin-top:12px}.game-hud{right:17px;top:18px}.keys{display:none}}
+    @media(max-height:620px) and (min-width:761px){.shell{height:min(650px,100dvh)}.panel{padding:20px 28px}.hero-bird{height:78px}.hero-bird img{height:80px}.panel h1{font-size:30px}.desc{margin-bottom:13px}.actions{gap:7px}.btn{min-height:43px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <aside class="rail">
+      <div class="brand"><div class="brand-mark">✦</div><div><div class="brand-name">KANATLI</div><div class="brand-sub">GÖKYÜZÜNE DOĞRU</div></div></div>
+      <p class="eyebrow">ANA MENÜ</p>
+      <nav class="nav" aria-label="Oyun menüsü">
+        <button class="active" data-view="home"><span class="ico">⌂</span><span>Ana menü</span></button>
+        <button data-view="costumes"><span class="ico">✦</span><span>Kostümler</span></button>
+        <button data-view="about"><span class="ico">ⓘ</span><span>Hakkında</span></button>
+      </nav>
+      <div class="rail-spacer"></div>
+      <div class="best-card"><div class="best-label">EN İYİ SKORUN</div><div class="best-value"><b id="bestScore">0</b> <span>puan</span></div></div>
+      <p class="rail-note">Her kanat çırpışında yeni bir macera. ✨</p>
+    </aside>
+    <section class="stage" aria-label="Kanatlı oyun alanı">
+      <canvas id="game" aria-label="Oyun alanı"></canvas>
+      <button class="pause" id="pauseBtn" aria-label="Menüye dön" title="Menüye dön (Esc)">Ⅱ</button>
+      <div class="game-hud" id="hud">SKOR <strong id="score">0</strong></div>
+      <div class="overlay">
+        <section class="panel" id="homePanel">
+          <div class="hero-bird"><img id="heroBird" src="img/1.png" alt="Seçili kuş kostümü"></div>
+          <div class="kicker">Küçük kanatlar, büyük macera</div>
+          <h1>Gökyüzüne<br>kanat çırp!</h1>
+          <p class="desc">Engellerin arasından süzül, kendi rekorunu kır. Hazır mısın?</p>
+          <div class="actions"><button class="btn primary" id="startBtn">Oyunu başlat <span>→</span></button><button class="btn secondary" id="continueBtn">Devam et</button></div>
+          <div class="keys"><kbd>SPACE</kbd> veya <kbd>↑</kbd> kanat çırp · <kbd>ESC</kbd> menü</div>
+          <div class="mobile-hint">Dokunarak kanat çırp</div>
+        </section>
+        <section class="panel hidden" id="costumePanel">
+          <div class="kicker">Tarzını seç</div><h2>Kostümler</h2><p class="desc">Gökyüzüne hangi kuşla çıkacaksın?</p>
+          <div class="costumes" id="costumeList"></div><button class="btn primary" id="costumeDone">Tamam, hazırım!</button>
+        </section>
+        <section class="panel hidden" id="aboutPanel">
+          <div class="kicker">Bir kuşun hikâyesi</div><h2>Nasıl oynanır?</h2>
+          <div class="info"><div class="info-row"><span class="info-icon">🪽</span><span>Ekrana dokun veya <b>Boşluk / ↑</b> tuşuna basarak kanat çırp.</span></div><div class="info-row"><span class="info-icon">🌿</span><span>Yeşil engellere ve yere çarpmadan boşluklardan geç.</span></div><div class="info-row"><span class="info-icon">🏅</span><span>Her engel geçişi sana 1 puan kazandırır. Bakalım kaç puan yapacaksın!</span></div><div class="info-row"><span class="info-icon">⏸</span><span>Menüye dönmek için <b>Esc</b> tuşuna ya da sol üstteki durdur düğmesine bas.</span></div></div>
+          <button class="btn secondary" id="aboutDone">Menüye dön</button><div class="developer">Geliştirici: <strong>İbrahim Yıldırım</strong></div>
+        </section>
+        <section class="panel hidden" id="overPanel">
+          <div class="hero-bird"><img id="overBird" src="img/1.png" alt="Kuş"></div><div class="kicker">Bu tur tamamlandı</div><h2>Güzel uçuştu!</h2><p class="desc">Skorun <b id="finalScore">0</b> · Yeni rekor: <b id="finalBest">0</b></p>
+          <div class="actions"><button class="btn primary" id="retryBtn">Tekrar dene ↻</button><button class="btn secondary" id="overMenuBtn">Menüye dön</button></div>
+        </section>
+      </div>
+    </section>
+  </main>
+<script>
+(()=>{
+  const canvas=document.querySelector('#game'),ctx=canvas.getContext('2d');
+  let W=960;const H=600, groundH=74, imgs=[1,2,3,4,5].map(n=>{const i=new Image();i.src=`img/${n}.png`;return i});
+  let state='menu', view='home', bird=+(localStorage.getItem('kanatli-costume')||1), score=0,best=+(localStorage.getItem('kanatli-best')||0),pipes=[],particles=[],last=0,elapsed=0,groundX=0,raf,resumable=false;
+  let b={x:245,y:280,vy:0,r:22,rot:0};
+  const panels={home:document.querySelector('#homePanel'),costumes:document.querySelector('#costumePanel'),about:document.querySelector('#aboutPanel'),over:document.querySelector('#overPanel')};
+  document.querySelector('#bestScore').textContent=best;
+  function resize(){const dpr=Math.min(devicePixelRatio||1,2),r=canvas.getBoundingClientRect();canvas.width=Math.round(r.width*dpr);canvas.height=Math.round(r.height*dpr);const scale=canvas.height/H;W=canvas.width/scale;ctx.setTransform(scale,0,0,scale,0,0)}
+  new ResizeObserver(resize).observe(canvas);
+  function show(which){view=which;Object.entries(panels).forEach(([k,p])=>p.classList.toggle('hidden',k!==which));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===which));}
+  function menu(){state='menu';show('home');document.querySelector('#pauseBtn').style.display='none';document.querySelector('#hud').style.display='none';document.querySelector('#continueBtn').style.display=resumable?'block':'none';}
+  function reset(){score=0;pipes=[];particles=[];b={x:W*.255,y:280,vy:0,r:22,rot:0};elapsed=0;groundX=0;spawnPipe(W+120);spawnPipe(W+470);}
+  function start(){reset();resumable=true;state='playing';show('home');Object.values(panels).forEach(p=>p.classList.add('hidden'));document.querySelector('#pauseBtn').style.display='block';document.querySelector('#hud').style.display='block';document.querySelector('#score').textContent='0';}
+  function spawnPipe(x){const gap=178,margin=85;const top=margin+Math.random()*(H-groundH-gap-margin*2);pipes.push({x,top,gap,passed:false});}
+  function flap(){if(state==='playing'){b.vy=-440;for(let i=0;i<5;i++)particles.push({x:b.x-18,y:b.y+8,vx:-60-Math.random()*100,vy:(Math.random()-.5)*100,life:.35})}}
+  function endGame(){state='over';resumable=false;best=Math.max(best,score);localStorage.setItem('kanatli-best',best);document.querySelector('#bestScore').textContent=best;document.querySelector('#finalScore').textContent=score;document.querySelector('#finalBest').textContent=best;document.querySelector('#overBird').src=`img/${bird}.png`;document.querySelector('#pauseBtn').style.display='none';document.querySelector('#hud').style.display='none';show('over');}
+  function rounded(x,y,w,h,r,color){ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()}
+  function drawBackground(){const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,'#8bcfd0');g.addColorStop(.68,'#c4e9d9');g.addColorStop(1,'#f1d994');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    // Distant, soft hills
+    ctx.fillStyle='#94cbb6';ctx.beginPath();ctx.moveTo(0,470);for(let x=0;x<=W;x+=12)ctx.lineTo(x,440+Math.sin(x*.008+elapsed*.15)*24+Math.sin(x*.019)*9);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.fill();
+    ctx.fillStyle='#acd8af';ctx.beginPath();ctx.moveTo(0,493);for(let x=0;x<=W;x+=12)ctx.lineTo(x,463+Math.sin(x*.009+1+elapsed*.23)*18+Math.sin(x*.023)*7);ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.fill();
+    for(let i=0;i<5;i++){let x=((i*230-elapsed*12)%(W+200)+W+200)%(W+200)-80,y=80+i%3*62;ctx.globalAlpha=.5;rounded(x,y,76,21,12,'#ffffff');rounded(x+18,y-12,31,26,14,'#ffffff');rounded(x+42,y-5,28,20,11,'#ffffff');ctx.globalAlpha=1}
+    // tiny drifting flecks
+    for(let i=0;i<18;i++){const x=(i*61+elapsed*(8+i%4)*2)%(W-25)+12,y=(i*97+Math.sin(elapsed+i)*22)%(H-groundH-35)+22;ctx.globalAlpha=.35;ctx.fillStyle='#fff8d9';ctx.fillRect(x,y,3,3)}ctx.globalAlpha=1;
+  }
+  function drawPipe(p){const x=p.x,w=75,botY=p.top+p.gap;const grad=ctx.createLinearGradient(x,0,x+w,0);grad.addColorStop(0,'#3c9d76');grad.addColorStop(.2,'#79c878');grad.addColorStop(.75,'#66b96c');grad.addColorStop(1,'#318d69');
+    ctx.fillStyle=grad;ctx.fillRect(x,0,w,Math.max(0,p.top-18));rounded(x-7,p.top-18,w+14,18,7,'#286e5b');rounded(x-7,p.top-18,w+14,10,5,'#74c978');
+    ctx.fillStyle=grad;ctx.fillRect(x,botY+27,w,H-groundH-botY-27);rounded(x-7,botY+18,w+14,27,8,'#286e5b');rounded(x-7,botY+18,w+14,12,5,'#7bcd78');
+    ctx.fillStyle='#ffffff25';ctx.fillRect(x+13,p.top-24,8,Math.max(0,p.top-30));ctx.fillRect(x+13,botY+33,8,Math.max(0,H-groundH-botY-40));ctx.fillStyle='#245c4b55';ctx.fillRect(x+w-10,p.top-27,6,Math.max(0,p.top-30));ctx.fillRect(x+w-10,botY+33,6,Math.max(0,H-groundH-botY-40));
+  }
+  function drawGround(dt){groundX=(groundX+dt*100)%48;ctx.fillStyle='#f3df9d';ctx.fillRect(0,H-groundH,W,groundH);ctx.fillStyle='#78b96d';ctx.fillRect(0,H-groundH,W,12);ctx.fillStyle='#9bd083';for(let x=-48-groundX;x<W;x+=48){ctx.beginPath();ctx.moveTo(x,H-groundH+12);ctx.lineTo(x+10,H-groundH+3);ctx.lineTo(x+22,H-groundH+12);ctx.fill()}ctx.fillStyle='#d3bd7e';for(let x=-groundX;x<W;x+=24)ctx.fillRect(x,H-groundH+22,12,4);}
+  function drawBird(){const im=imgs[bird-1];ctx.save();ctx.translate(b.x,b.y);ctx.rotate(b.rot);if(im.complete&&im.naturalWidth)ctx.drawImage(im,-37,-27,74,54);else{ctx.fillStyle='#ff795d';ctx.beginPath();ctx.arc(0,0,22,0,Math.PI*2);ctx.fill()}ctx.restore()}
+  function frame(now){const dt=Math.min((now-last)/1000||0,.034);last=now;elapsed+=dt;
+    if(state==='playing'){b.vy+=1420*dt;b.y+=b.vy*dt;b.rot=Math.max(-.35,Math.min(.95,b.vy/540));const speed=205;for(const p of pipes){p.x-=speed*dt;if(!p.passed&&p.x+75<b.x){p.passed=true;score++;document.querySelector('#score').textContent=score}}if(pipes.length&&pipes[0].x<-100){pipes.shift();spawnPipe(pipes[pipes.length-1].x+330)}for(const q of particles){q.x+=q.vx*dt;q.y+=q.vy*dt;q.life-=dt}particles=particles.filter(q=>q.life>0);
+      const hitX=b.x+b.r>0&&pipes.some(p=>b.x+b.r>p.x-4&&b.x-b.r<p.x+79&&(b.y-b.r<p.top||b.y+b.r>p.top+p.gap));if(hitX||b.y+b.r>H-groundH||b.y-b.r<0)endGame();}
+    drawBackground();pipes.forEach(drawPipe);drawGround(dt);particles.forEach(q=>{ctx.globalAlpha=Math.max(0,q.life/.35);ctx.fillStyle='#fff3be';ctx.fillRect(q.x,q.y,4,4)});ctx.globalAlpha=1;if(state==='playing'||state==='over')drawBird();else{b.y=280+Math.sin(elapsed*2.5)*9;drawBird()}
+    raf=requestAnimationFrame(frame)
+  }
+  document.querySelector('#startBtn').onclick=start;document.querySelector('#retryBtn').onclick=start;document.querySelector('#overMenuBtn').onclick=menu;document.querySelector('#pauseBtn').onclick=menu;document.querySelector('#continueBtn').onclick=()=>{if(state==='menu'&&resumable){state='playing';Object.values(panels).forEach(p=>p.classList.add('hidden'));document.querySelector('#pauseBtn').style.display='block';document.querySelector('#hud').style.display='block'}else start()};
+  document.querySelector('#costumeDone').onclick=()=>show('home');document.querySelector('#aboutDone').onclick=()=>show('home');
+  document.querySelectorAll('.nav button').forEach(btn=>btn.onclick=()=>{if(state==='playing')menu();show(btn.dataset.view)});
+  const list=document.querySelector('#costumeList');for(let n=1;n<=5;n++){const btn=document.createElement('button');btn.className='costume'+(n===bird?' selected':'');btn.setAttribute('aria-label',`Kostüm ${n}`);btn.innerHTML=`<img src="img/${n}.png" alt="Kostüm ${n}">`;btn.onclick=()=>{bird=n;localStorage.setItem('kanatli-costume',n);document.querySelector('#heroBird').src=`img/${n}.png`;document.querySelector('#overBird').src=`img/${n}.png`;list.querySelectorAll('.costume').forEach((x,i)=>x.classList.toggle('selected',i===n-1))};list.append(btn)}
+  window.addEventListener('keydown',e=>{if(e.code==='Escape'){if(state==='playing')menu();else if(view!=='home')show('home');return}if(['Space','ArrowUp','KeyW'].includes(e.code)){e.preventDefault();if(state==='playing')flap();else if(state==='menu'&&view==='home')start()}});
+  canvas.addEventListener('pointerdown',e=>{if(e.button!==0)return;if(state==='playing')flap()});document.querySelector('#heroBird').src=`img/${bird}.png`;document.querySelector('#overBird').src=`img/${bird}.png`;reset();resize();raf=requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
