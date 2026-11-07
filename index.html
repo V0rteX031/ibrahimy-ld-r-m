@@ -319,14 +319,14 @@
 
   <!-- Tanıtım Videosu Modalı -->
   <div class="modal fade" id="introVideoModal" tabindex="-1" aria-labelledby="introVideoLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 560px;">
       <div class="modal-content bg-dark border border-primary rounded-4 overflow-hidden">
         <div class="modal-header border-secondary">
           <h5 class="modal-title text-white" id="introVideoLabel">İbrahim Yıldırım | Tanıtım Videosu</h5>
           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
         </div>
         <div class="modal-body p-2">
-          <video id="introVideo" class="w-100 rounded-3" controls playsinline preload="auto" autoplay muted>
+          <video id="introVideo" class="w-100 rounded-3" style="max-height: 60vh; object-fit: contain;" controls playsinline preload="auto" autoplay muted>
             <source src="./video.mp4" type="video/mp4">
             Tarayıcınız video oynatmayı desteklemiyor.
           </video>
