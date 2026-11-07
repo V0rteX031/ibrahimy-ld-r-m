@@ -316,6 +316,25 @@
     </div>
   </footer>
 
+
+  <!-- Tanıtım Videosu Modalı -->
+  <div class="modal fade" id="introVideoModal" tabindex="-1" aria-labelledby="introVideoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark border border-primary rounded-4 overflow-hidden">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title text-white" id="introVideoLabel">İbrahim Yıldırım | Tanıtım Videosu</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+        </div>
+        <div class="modal-body p-2">
+          <video id="introVideo" class="w-100 rounded-3" controls playsinline preload="auto" autoplay muted>
+            <source src="./video.mp4" type="video/mp4">
+            Tarayıcınız video oynatmayı desteklemiyor.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <button class="back-top" id="backTop" aria-label="Sayfanın başına dön">↑</button>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
@@ -349,6 +368,30 @@
       backTop.classList.toggle('show', window.scrollY > 450);
     }, { passive: true });
     backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Tanıtım videosunu sayfa açıldıktan 3 saniye sonra göster.
+    const introVideoModalElement = document.getElementById('introVideoModal');
+    const introVideo = document.getElementById('introVideo');
+    const introVideoModal = new bootstrap.Modal(introVideoModalElement, {
+      backdrop: true,
+      keyboard: true
+    });
+
+    setTimeout(() => {
+      introVideoModal.show();
+    }, 3000);
+
+    // Video bittiğinde modalı otomatik kapat.
+    introVideo.addEventListener('ended', () => {
+      introVideoModal.hide();
+    });
+
+    // Modal kapatıldığında videoyu durdur ve başa sar.
+    introVideoModalElement.addEventListener('hidden.bs.modal', () => {
+      introVideo.pause();
+      introVideo.currentTime = 0;
+    });
+
   </script>
   <elevenlabs-convai agent-id="agent_4501m68ayet8edmb7ex1p07zjn42"></elevenlabs-convai><script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 </body>
